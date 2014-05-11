@@ -1,0 +1,29 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch branchHome
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   app/src/main/AndroidManifest.xml
+#	new file:   app/src/main/ic_launcher-web.png
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	.gitignore
+#	.idea/
+#	app/.gitignore
+#	app/app.iml
+#	app/build.gradle
+#	app/proguard-rules.txt
+#	app/src/main/java/
+#	app/src/main/res/
+#	build.gradle
+#	fourteen.iml
+#	gradle.properties
+#	gradle/
+#	gradlew
+#	gradlew.bat
+#	settings.gradle
+
