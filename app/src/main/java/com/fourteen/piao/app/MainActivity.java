@@ -1,28 +1,22 @@
 package com.fourteen.piao.app;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+public class MainActivity extends Activity {
 
-public class MainActivity extends ActionBarActivity {
-
+    private Button buttonNext = null;
+    private Button buttonSampleVideo = null;
     protected ImageLoader imageLoader = ImageLoader.getInstance();
     private String str_tmp = "";
     @Override
@@ -30,16 +24,27 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView img= (ImageView) findViewById(R.id.imageView);
+//        ImageView img= (ImageView) findViewById(R.id.imageView);
+
+
 //        img.setImageResource(R.drawable.my_image);
 
-        String sUrl = "";
+//        String sUrl = "";
 //        sUrl = "http://10.0.0.2/web/upload_files/1_1361325593_9134826.jpg";
 //        sUrl = "http://edu-tms.com/maipiao.biz/web/upload_files/1_20140317160314_tcorc_jpg.bmp";
-        sUrl = "http://www.edu-tms.com/maipiao.biz/web/upload_files/sublime_control.png";
+//        sUrl = "http://www.edu-tms.com/maipiao.biz/web/upload_files/sublime_control.png";
 
 
         try {
+
+            buttonNext = (Button)findViewById(R.id.btnNext);
+            buttonNext.setText( "Next" );
+            buttonNext.setOnClickListener(new btnNextListener());
+
+            System.out.println("me ...");
+            buttonSampleVideo = (Button)findViewById(R.id.btnDemoVideo);
+            buttonSampleVideo.setOnClickListener(new btnDemoVideoListener() );
+
 
             //--------------------------------------option start
 //            DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -68,7 +73,7 @@ public class MainActivity extends ActionBarActivity {
 //            ImageLoader.getInstance().init(config); //初始化
 
 
-            ImageLoader.getInstance().displayImage(sUrl, img);
+//            ImageLoader.getInstance().displayImage(sUrl, img);
         } catch (Exception e) {
             str_tmp = e.getMessage();
             e.printStackTrace();
@@ -85,18 +90,48 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
+    //the button jump to next activity through this intent
+    private class btnNextListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, NextActivity.class);
+            MainActivity.this.startActivity(intent);
         }
-        return super.onOptionsItemSelected(item);
     }
 
+    private class btnDemoVideoListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+
+            try {
+                Intent intentDemoVideo = new Intent();
+                intentDemoVideo.setClass(MainActivity.this, VideoPlayActivity.class);
+//                MainActivity.this.startActivity(intentDemoVideo);
+                startActivity(intentDemoVideo);
+                MainActivity.this.finish();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("debug info", e.getMessage());
+            } finally {
+            }
+        }
+
+
+    }
 
 
 //    private void startImagePagerActivity(int position) {

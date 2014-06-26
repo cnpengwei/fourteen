@@ -59,4 +59,25 @@
         android:src="@drawable/ic_launcher"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Step"
+        android:id="@+id/btnNext"
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignEnd="@+id/button2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sample Video For..."
+        android:id="@+id/btnDemoVideo"
+        android:layout_below="@+id/btnNext"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnNext"
+        android:layout_alignEnd="@+id/btnNext" />
+
+
 </RelativeLayout>
